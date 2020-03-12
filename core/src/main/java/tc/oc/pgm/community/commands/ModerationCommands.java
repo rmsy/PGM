@@ -27,8 +27,6 @@ import org.bukkit.entity.Player;
 import tc.oc.pgm.Config;
 import tc.oc.pgm.api.PGM;
 import tc.oc.pgm.api.Permissions;
-import tc.oc.pgm.api.chat.Audience;
-import tc.oc.pgm.api.chat.Sound;
 import tc.oc.pgm.api.match.Match;
 import tc.oc.pgm.api.match.MatchManager;
 import tc.oc.pgm.api.player.MatchPlayer;
@@ -37,6 +35,8 @@ import tc.oc.pgm.community.events.PlayerPunishmentEvent;
 import tc.oc.pgm.listeners.ChatDispatcher;
 import tc.oc.pgm.util.PrettyPaginatedComponentResults;
 import tc.oc.pgm.util.XMLUtils;
+import tc.oc.util.bukkit.chat.Audience;
+import tc.oc.util.bukkit.chat.Sound;
 import tc.oc.util.bukkit.component.Component;
 import tc.oc.util.bukkit.component.ComponentRenderers;
 import tc.oc.util.bukkit.component.ComponentUtils;
@@ -603,7 +603,8 @@ public class ModerationCommands {
       Duration duration,
       boolean silent) {
     PlayerPunishmentEvent event =
-        new PlayerPunishmentEvent(issuer, target, type, reason, duration == null ? Duration.ZERO : duration, silent);
+        new PlayerPunishmentEvent(
+            issuer, target, type, reason, duration == null ? Duration.ZERO : duration, silent);
     target.getMatch().callEvent(event);
     if (event.isCancelled()) {
       if (event.getCancelMessage() != null) {

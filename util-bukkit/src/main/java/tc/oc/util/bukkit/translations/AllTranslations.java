@@ -8,7 +8,7 @@ public final class AllTranslations extends BaseTranslator {
   private static AllTranslations instance;
 
   private AllTranslations() {
-    super(Bukkit.getLogger(), new TranslationProvider("strings"));
+    super(Bukkit.getLogger(), new TranslationProvider("legacy"));
   }
 
   public static AllTranslations get() {
